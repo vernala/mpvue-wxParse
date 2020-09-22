@@ -1,74 +1,75 @@
 <template>
-  <!--判断是否是标签节点-->
-  <block v-if="node.node == 'element'">
-    <block v-if="node.tag == 'button'">
-      <button type="default" size="mini">
-        <block v-for="(node, index) of node.nodes" :key="index">
-          <wx-parse-template :node="node" />
+    <!--判断是否是标签节点-->
+    <block v-if="node.node == 'element'">
+        <block v-if="node.tag == 'button'">
+            <button type="default" size="mini">
+                <block v-for="(node, index) of node.nodes" :key="index">
+                    <wx-parse-template :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
+                </block>
+            </button>
         </block>
-      </button>
-    </block>
 
-    <!--li类型-->
-    <block v-else-if="node.tag == 'li'">
-      <view :class="node.classStr" :style="node.styleStr">
-        <block v-for="(node, index) of node.nodes" :key="index">
-          <wx-parse-template :node="node" />
+        <!--li类型-->
+        <block v-else-if="node.tag == 'li'">
+            <view class="view" :class="node.classStr" :style="node.styleStr">
+                <block v-for="(node, index) of node.nodes" :key="index">
+                    <wx-parse-template :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
+                </block>
+            </view>
         </block>
-      </view>
-    </block>
 
-    <!--video类型-->
-    <block v-else-if="node.tag == 'video'">
-      <wx-parse-video :node="node" />
-    </block>
-
-    <!--audio类型-->
-    <block v-else-if="node.tag == 'audio'">
-      <wx-parse-audio :node="node" />
-    </block>
-
-    <!--img类型-->
-    <block v-else-if="node.tag == 'img'">
-      <wx-parse-img :node="node" />
-    </block>
-
-    <!--a类型-->
-    <block v-else-if="node.tag == 'a'">
-      <view @click="wxParseATap" :class="node.classStr" :data-href="node.attr.href" :style="node.styleStr">
-        <block v-for="(node, index) of node.nodes" :key="index">
-          <wx-parse-template :node="node" />
+        <!--video类型-->
+        <block v-else-if="node.tag == 'video'">
+            <wx-parse-video :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
         </block>
-      </view>
-    </block>
 
-    <!--table类型-->
-    <block v-else-if="node.tag == 'table'">
-      <view :class="node.classStr" class="table" :style="node.styleStr">
-        <block v-for="(node, index) of node.nodes" :key="index">
-          <wx-parse-template :node="node" />
+        <!--audio类型-->
+        <block v-else-if="node.tag == 'audio'">
+            <wx-parse-audio :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
         </block>
-      </view>
-    </block>
 
-    <!--br类型-->
-    <block v-else-if="node.tag == 'br'">
-      <text>\n</text>
-    </block>
-
-    <!--其他标签-->
-    <block v-else>
-      <view :class="node.classStr" :style="node.styleStr">
-        <block v-for="(node, index) of node.nodes" :key="index">
-          <wx-parse-template :node="node" />
+        <!--img类型-->
+        <block v-else-if="node.tag == 'img'">
+            <wx-parse-img :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
         </block>
-      </view>
+
+        <!--a类型-->
+        <block v-else-if="node.tag == 'a'">
+            <view class="view" @click="wxParseATap" :class="node.classStr" :data-href="node.attr.href"
+                  :style="node.styleStr">
+                <block v-for="(node, index) of node.nodes" :key="index">
+                    <wx-parse-template :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
+                </block>
+            </view>
+        </block>
+
+        <!--table类型-->
+        <block v-else-if="node.tag == 'table'">
+            <view class="view" :class="node.classStr" class="table" :style="node.styleStr">
+                <block v-for="(node, index) of node.nodes" :key="index">
+                    <wx-parse-template :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
+                </block>
+            </view>
+        </block>
+
+        <!--br类型-->
+        <block v-else-if="node.tag == 'br'">
+            <text>\n</text>
+        </block>
+
+        <!--其他标签-->
+        <block v-else>
+            <view class="view" :class="node.classStr" :style="node.styleStr">
+                <block v-for="(node, index) of node.nodes" :key="index">
+                    <wx-parse-template :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
+                </block>
+            </view>
+        </block>
+
     </block>
 
-  </block>
-
-  <!--判断是否是文本节点-->
-  <block v-else-if="node.node == 'text'">{{node.text}}</block>
+    <!--判断是否是文本节点-->
+    <block v-else-if="node.node == 'text'">{{ node.text }}</block>
 </template>
 
 <script>
@@ -76,24 +77,24 @@ import wxParseTemplate from './wxParseTemplate1';
 import wxParseImg from './wxParseImg';
 import wxParseVideo from './wxParseVideo';
 import wxParseAudio from './wxParseAudio';
+import mixin from "../libs/mixin";
 
 export default {
-  name: 'wxParseTemplate0',
-  props: {
-    node: {},
-  },
-  components: {
-    wxParseTemplate,
-    wxParseImg,
-    wxParseVideo,
-    wxParseAudio,
-  },
-  methods: {
-    wxParseATap(e) {
-      const { href } = e.currentTarget.dataset;
-      if (!href) return;
-      this.node.$host.navigate(href, e);
+    name: 'wxParseTemplate0',
+    mixin: [mixin],
+    components: {
+        wxParseTemplate,
+        wxParseImg,
+        wxParseVideo,
+        wxParseAudio,
     },
-  },
+    methods: {
+        wxParseATap(e) {
+            const {href} = e.currentTarget.dataset;
+            if (!href) return;
+            this.onNavigate(href, e);
+        },
+    },
 };
 </script>
+<style scoped src="../wxParse.css"/>

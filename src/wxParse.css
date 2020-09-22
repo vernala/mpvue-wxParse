@@ -9,137 +9,138 @@
  * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
  */
 
-.wxParse {
-  width: 100%;
-  font-family: Helvetica, sans-serif;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.8;
-}
-
-.wxParse view {
+.view {
   word-break: hyphenate;
 }
 
-.wxParse .inline {
+.inline {
   display: inline;
   margin: 0;
   padding: 0;
 }
 
-.wxParse .div {
+.div {
+  word-break: hyphenate;
   margin: 0;
   padding: 0;
 }
 
-.wxParse .h1 {
+.h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-.wxParse .h2 {
+
+.h2 {
   font-size: 1.5em;
   margin: 0.83em 0;
 }
-.wxParse .h3 {
+
+.h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
-.wxParse .h4 {
+
+.h4 {
   margin: 1.33em 0;
 }
-.wxParse .h5 {
+
+.h5 {
   font-size: 0.83em;
   margin: 1.67em 0;
 }
-.wxParse .h6 {
+
+.h6 {
   font-size: 0.67em;
   margin: 2.33em 0;
 }
 
-.wxParse .h1,
-.wxParse .h2,
-.wxParse .h3,
-.wxParse .h4,
-.wxParse .h5,
-.wxParse .h6,
-.wxParse .b,
-.wxParse .strong {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.b,
+.strong {
   font-weight: bolder;
 }
 
-.wxParse .p {
+.p {
   margin: 1em 0;
 }
 
-.wxParse .i,
-.wxParse .cite,
-.wxParse .em,
-.wxParse .var,
-.wxParse .address {
+.i,
+.cite,
+.em,
+.var,
+.address {
   font-style: italic;
 }
 
-.wxParse .pre,
-.wxParse .tt,
-.wxParse .code,
-.wxParse .kbd,
-.wxParse .samp {
+.pre,
+.tt,
+.code,
+.kbd,
+.samp {
   font-family: monospace;
 }
-.wxParse .pre {
+
+.pre {
   overflow: auto;
   background: #f5f5f5;
   padding: 8px;
   white-space: pre;
   margin: 1em 0px;
 }
-.wxParse .code {
+
+.code {
   display: inline;
   background: #f5f5f5;
 }
 
-.wxParse .big {
+.big {
   font-size: 1.17em;
 }
 
-.wxParse .small,
-.wxParse .sub,
-.wxParse .sup {
+.small,
+.sub,
+.sup {
   font-size: 0.83em;
 }
 
-.wxParse .sub {
+.sub {
   vertical-align: sub;
 }
-.wxParse .sup {
+
+.sup {
   vertical-align: super;
 }
 
-.wxParse .s,
-.wxParse .strike,
-.wxParse .del {
+.s,
+.strike,
+.del {
   text-decoration: line-through;
 }
 
-.wxParse .strong,
-.wxParse .s {
+.strong,
+.s {
   display: inline;
 }
 
-.wxParse .a {
+.a {
   color: deepskyblue;
 }
 
-.wxParse .video {
+.video {
   text-align: center;
   margin: 10px 0;
 }
 
-.wxParse .video-video {
+.video-video {
   width: 100%;
 }
 
-.wxParse .img {
+.img {
   display: inline-block;
   width: 0;
   height: 0;
@@ -147,79 +148,89 @@
   overflow: hidden;
 }
 
-.wxParse .blockquote {
+.blockquote {
   margin: 5px 0;
   padding: 10px 0 10px 10px;
   font-family: Courier, Calibri, "宋体";
   background: #f5f5f5;
   border-left: 3px solid #dbdbdb;
 }
-.wxParse .blockquote .p {
+
+.blockquote .p {
   margin: 0;
 }
 
-.wxParse .ul, .wxParse .ol {
+.ul, .ol {
   display: block;
   margin: 1em 0;
   padding-left: 16px;
 }
-.wxParse .ol {
+
+.ol {
   list-style-type: disc;
 }
-.wxParse .ol {
+
+.ol {
   list-style-type: decimal;
 }
-.wxParse .li {
+
+.li {
   display: list-item;
   align-items: baseline;
   text-align: match-parent;
 }
-.wxParse .ul .ul, .wxParse .ol .ul {
+
+.ul .ul, .ol .ul {
   list-style-type: circle;
 }
-.wxParse .ol .ol .ul, .wxParse .ol .ul .ul, .wxParse .ul .ol .ul, .wxParse .ul .ul .ul {
-    list-style-type: square;
+
+.ol .ol .ul, .ol .ul .ul, .ul .ol .ul, .ul .ul .ul {
+  list-style-type: square;
 }
 
-.wxParse .u {
+.u {
   text-decoration: underline;
 }
-.wxParse .hide {
+
+.hide {
   display: none;
 }
-.wxParse .del {
+
+.del {
   display: inline;
 }
-.wxParse .figure {
+
+.figure {
   overflow: hidden;
 }
 
-.wxParse .table {
+.table {
   width: 100%;
 }
-.wxParse .thead, .wxParse .tfoot, .wxParse .tr {
+
+.thead, .tfoot, .tr {
   display: flex;
   flex-direction: row;
 }
-.wxParse .tr {
-  width:100%;
+
+.tr {
+  width: 100%;
   display: flex;
   border-right: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
 }
-.wxParse .th,
-.wxParse .td {
+
+.th,
+.td {
   display: flex;
   width: 580px;
   overflow: auto;
   flex: 1;
   padding: 5px;
+  border-top: 1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
 }
-.wxParse .td:last {
-  border-top: 1px solid #e0e0e0;
-}
-.wxParse .th {
+
+.th {
   background: #f0f0f0;
-  border-top: 1px solid #e0e0e0;
 }
