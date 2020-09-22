@@ -13,6 +13,7 @@
         <block v-for="(node,index) in nodes" :key="index">
             <WxParseTemplate :node="node"/>
         </block>
+        <slot v-if="!nodes.length"/>
     </view>
 </template>
 
