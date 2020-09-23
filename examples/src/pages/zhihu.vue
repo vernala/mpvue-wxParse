@@ -38,7 +38,3 @@ export default {
   }
 }
 </script>
-
-<style>
-@import url("~mpvue-wxparse/src/wxParse.css");
-</style>
