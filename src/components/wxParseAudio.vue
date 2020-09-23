@@ -17,6 +17,6 @@ import mixin from "../libs/mixin";
 
 export default {
     name: 'wxParseAudio',
-    mixin: [mixin],
+    mixins: [mixin],
 };
 </script>

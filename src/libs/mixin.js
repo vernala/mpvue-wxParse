@@ -7,12 +7,14 @@ export default {
             },
         },
     },
+
     methods: {
         /*
         * @src string
         * @e target element
         * */
         onPreview(src, e) {
+            console.log(src,e)
             this.$emit('preview', src, e)
         },
         /*

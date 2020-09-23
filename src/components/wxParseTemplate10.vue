@@ -30,7 +30,7 @@
 
         <!--img类型-->
         <block v-else-if="node.tag == 'img'">
-            <wx-parse-img :node="node"/>
+            <wx-parse-img :node="node" @preview="onPreview" @removeImage="onRemoveImage" @navigate="onNavigate"/>
         </block>
 
         <!--a类型-->
@@ -71,7 +71,7 @@ import mixin from "../libs/mixin";
 
 export default {
     name: 'wxParseTemplate10',
-    mixin: [mixin],
+    mixins: [mixin],
     components: {
         wxParseTemplate,
         wxParseImg,
@@ -87,4 +87,6 @@ export default {
     },
 };
 </script>
-<style scoped src="../wxParse.css"/>
+<style scoped>
+@import '../wxParse.css';
+</style>

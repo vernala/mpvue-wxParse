@@ -47,7 +47,7 @@
 * 安装
 
 ``` bash
-npm i mpvue-wxparse
+npm i uni-wxparse
 ```
 
 * 使用

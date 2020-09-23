@@ -16,7 +16,7 @@ import mixin from "../libs/mixin";
 
 export default {
     name: 'wxParseImg',
-    mixin: [mixin],
+    mixins: [mixin],
     data() {
         return {
             newStyleStr: '',
@@ -74,4 +74,6 @@ export default {
     },
 };
 </script>
-<style scoped src="../wxParse.css"/>
+<style scoped>
+@import '../wxParse.css';
+</style>

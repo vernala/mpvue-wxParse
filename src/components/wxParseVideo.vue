@@ -16,7 +16,9 @@ import mixin from "../libs/mixin";
 
 export default {
     name: 'wxParseVideo',
-    mixin: [mixin],
+    mixins: [mixin],
 };
 </script>
-<style scoped src="../wxParse.css"/>
+<style scoped>
+@import '../wxParse.css';
+</style>

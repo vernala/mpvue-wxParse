@@ -9,6 +9,10 @@
  * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
  */
 
+:host{
+  display: block;
+}
+
 .view {
   word-break: hyphenate;
 }

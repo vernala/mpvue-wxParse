@@ -9,9 +9,9 @@
 
 <template>
     <!--基础元素-->
-    <view class="view" class="wxParse" :class="className" v-if="!loading">
+    <view class="view wxParse" :class="className" v-if="!loading">
         <block v-for="(node,index) in nodes" :key="index">
-            <WxParseTemplate :node="node"/>
+            <WxParseTemplate :node="node" @preview="preview" @removeImage="removeImageUrl" @navigate="navigate"/>
         </block>
         <slot v-if="!nodes.length"/>
     </view>
@@ -64,7 +64,7 @@ export default {
             type: Object,
             default() {
                 return {
-                    mode: 'aspectFit',
+                    mode: 'widthFix',
                     padding: 0,
                     lazyLoad: false,
                     domain: '',
@@ -96,6 +96,7 @@ export default {
             };
             const results = HtmlToJson(parseData, customHandler, imageProp, this);
             this.imageUrls = results.imageUrls;
+            console.log(results.nodes)
             return results.nodes;
         },
     },
